@@ -1,0 +1,22 @@
+Balanceadores software y hardware:
+Incapsula(Software)
+NetScaler(Software)
+Snapt Balancer(Software)
+Nginx(Software)
+Apache mod_athena(Software)
+Barracuda Load Balancer(Hardware)
+Kemp Load Balancer(Hardware)
+
+Servidores de aplicaciones:
+Lwan(C)
+Tuxedo(C++)
+Tomcat(Java)
+Node.js(JavaScript)
+Django-cms(Python)
+Mongrel(ruby)
+
+Servidores de almacenamiento:
+Microsoft Azure
+Softlayer
+HPE
+ 
