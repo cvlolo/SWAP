@@ -1,0 +1,5 @@
+apache---->Servidor Web
+nginx ---->Servidor Web (también puede utilizarse como proxy inverso y balanceador de carga)
+thttpd---->Servidor Web	(Se caracteriza por ser simple, rápido y portable)
+Cherokee-->Servidor Web (también puede utilizarse como proxy inverso y balanceador de carga)
+node.js--->Entorno en tiempo de ejecución de JavaScript que se utiliza para el desarrollo de herramientas para servidores y aplicaciones.
