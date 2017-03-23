@@ -1,0 +1,14 @@
+La primera tarea que hemos resuelto en esta práctica, es la de poder acceder a la otra máquina que teníamos con SSH, sin que se nos pida contraseña.Para ello
+hemos usado los siguientes comandos:
+
+- ssh-keygen -b 4096 -t rsa
+- ssh-copy-id(ip de la máquina)
+
+Y con las capturas subidas a github comprobamos que funciona correctamente.
+
+En segundo lugar, editamos el archivo situado en /etc/crontab con el fin de programar la clonación de la carpeta /var/www/ situada en la máquina 1 y pasarla a la mmáquina 2
+con el uso de SSH y RSYNC.El comando utilizado para ello es:
+
+- rsync -avz -e ssh ipmaquina1:/var/www/ /var/www/ 
+
+Dicho comando lo hemos copiado en un script de sh y mediante crontab se ejecuta cada hora automáticamente.Adjuntamos capturas de pantalla del script y del archivo crontab.
