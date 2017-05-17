@@ -1,4 +1,4 @@
-#Práctica 4
+# Práctica 4
 ## Instalación certificado SSL
 
 Para generar un certificado autofirmado SSL activamos el módulo SSL con *a2enmod ssl* y reiniciamos el servicio apache con *service apache2 restart*.
@@ -6,11 +6,11 @@ Ahora generamos los certificados y especificamos la ruta con *mkdir /etc/apache2
 Introducimos los datos acorde al guión y editamos el archivo de configuración que se encuentra en  */etc/apache2/sites-available/default-ssl*.
 En el archivo de configuración, encontramos la línea  SSLEngine on y ponemos debajo de ella lo siguiente: *SSLCertificateFile /etc/apache2/ssl/apache.crt* y *SSLCertificateKeyFile /etc/apache2/ssl/apache.key*
 Activamos el sitio default--ssl y reiniciamos apache: *a2ensite default-ssl* y *service apache2 reload*.
-Probamos que está todo bien configurado entrando desde otra máquina virtual a la dirección https://ipMaquina.
+Probamos que está todo bien configurado entrando desde otra máquina virtual a la dirección https://ipMaquina
 ![img](https://github.com/cvlolo/SWAP/blob/master/practica4/ssl.png)
 
 
-##Configuración del cortafuegos
+## Configuración del cortafuegos
 
 En esta segunda parte, vamos a configurar el cortafuegos para que deje paso al tráfico que nosotros queremos.
 Para ello, vamos a crear el siguiente script:
