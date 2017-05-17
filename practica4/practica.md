@@ -6,7 +6,7 @@ Ahora generamos los certificados y especificamos la ruta con *mkdir /etc/apache2
 Introducimos los datos acorde al guión y editamos el archivo de configuración que se encuentra en  */etc/apache2/sites-available/default-ssl*.
 En el archivo de configuración, encontramos la línea  SSLEngine on y ponemos debajo de ella lo siguiente: *SSLCertificateFile /etc/apache2/ssl/apache.crt* y *SSLCertificateKeyFile /etc/apache2/ssl/apache.key*
 Activamos el sitio default--ssl y reiniciamos apache: *a2ensite default-ssl* y *service apache2 reload*.
-Probamos que está todo bien configurado entrando desde otra máquina virtual a la dirección *https://ipMaquina*
+Probamos que está todo bien configurado entrando desde otra máquina virtual a la dirección **https://ip_Maquina**
 ![img](https://github.com/cvlolo/SWAP/blob/master/practica4/ssl.png)
 
 
