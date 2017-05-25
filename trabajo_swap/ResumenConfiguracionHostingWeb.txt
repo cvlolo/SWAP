@@ -1,0 +1,9 @@
+Nuestro trabajo ha consistido en la configuración de un hosting web, es decir, un servicio que se ofrece a los diferentes usuarios de Internet para que puedan alojar sus
+archivos y páginas web.Además,para que este sea accesible a los demás usuarios hay que establecer un dominio web que será el que identifique al hosting de forma que los
+servidores DNS transformen el nombre del dominio a la dirección IP del hosting. Para ello, hemos utilizado una host web llamada Hostinger que nos ofrecía una cómoda
+y gratuita forma (durante 12 meses) de llevar a cabo esta tarea. La forma de hacerlo es crearse una cuenta en Hostinger, elegir el paquete grauito y configurar las opciones 
+para nuestro hosting como el nombre de dominio. Una vez creado el hosting, comprobamos que se ha hecho correctamente introduciendo el nombre de domnio en la barra de 
+navegación. Deberíamos ver la página de bienvenida de Hostinger que aparece por defecto cuando se crea el dominio. Una vez creado el dominio, nos vamos a la administración 
+donde podemos llevar a cabo diferentes tareas de mantenimiento del hosting(filtrado de IPS, acceso mediante SSH etc). Para el intercambio de ficheros hay que utilizar el
+protocolo FTP para el cuál existen diferentes aplicaciones que lo implementan. Nosotros hemos utilizado Filezilla. Dentro de FileZilla solo hay que colocar los datos que nos
+ofrece Hostinger como el usuario, contraseña, puerto etc y subir los archivos deseados a la carpeta public_html del hosting.
