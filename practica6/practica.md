@@ -6,7 +6,7 @@ quedando la máquina virtual de la siguiente forma:
 
 ![img](https://github.com/cvlolo/SWAP/blob/master/practica6/raidcap01.png)
 
-Buscamos la identificación de los discos utilizando *sudo fdkisk -l* y nos aparece lo siguiente:
+Buscamos la identificación de los discos utilizando *sudo fdisk -l* y nos aparece lo siguiente:
 
 ![img](https://github.com/cvlolo/SWAP/blob/master/practica6/raidcap1.png)
 
@@ -37,7 +37,7 @@ Creamos el directorio sobre el que se montará la unidad del RAID:
   
   Y por último, podemos añadir, en caliente, un nuevo disco que vendría a reemplazar al disco que hemos retirado: *sudo mdadm --manage --add /dev/md0 /dev/sdb*
     ![img](https://github.com/cvlolo/SWAP/blob/master/practica6/raidcap6.png)
-    ![img](https://github.com/cvlolo/SWAP/blob/master/practica6/raidcap67.png)
+    ![img](https://github.com/cvlolo/SWAP/blob/master/practica6/raidcap67png.png)
 
 
   
