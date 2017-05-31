@@ -1,0 +1,18 @@
+En primer lugar, para poder redirigir el tráfico de una subred a otra en Linux, debemos activar el IP Forwarding utilizando el siguiente comando:
+echo "1" > /proc/sys/net/ipv4/ip_forward
+
+Tras esto, reiniciamos el servicio de red utilizando: /etc/init.d/networking restart
+
+El siguiente paso es crear las reglas necesarias en iptables:
+iptables -t nat -A PREROUTING -p tcp --dport PuertoOrigen -j DNAT --to-destination ipDestino:PuertoDestino
+Con el comando anterior estamos dirigiendo todo el tráfico que entra por un puerto a una ip destino y un puerto destino de nuestra elección.
+Por último, podemos elegir otras opciones en lugar de redirigir el tráfico de un puerto, pudiendo utilizar una ip o una interfaz:
+
+iptables -t nat -A PREROUTING -s IpOrigen -p tcp --dport PuertoOrigen j DNAT --to-destination ipDestino:puertoDestino
+iptables -t nat -A PREROUTING -i InterfazOrigen -p tcp --dport PuertoOrigen-j DNAT --to-destination ipDestino:puertoDestino
+
+En Windows podemos utilizar el siguiente comando:
+
+netsh interface portproxy add v4tov4 listenport=PuertoOrigen listenaddress=IpOrigen connectport=PuertoDestino connectaddress=IpDestino
+
+

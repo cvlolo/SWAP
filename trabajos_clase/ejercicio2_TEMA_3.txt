@@ -1,0 +1,14 @@
+Para el bloqueo y filtrado de paquetes en Linux podemos utilizar el comando iptables. Este comando tiene multitud de opciones y nos permite hacer cualquier cosa.
+Algunos ejemplos son:
+
+iptables -A INPUT -p tcp –dport Puerto -j DROP (Bloquea conexiones entrantes al puerto que deseemos)
+iptables -A INPUT -s IP-j DROP (Bloquea una Ip concreta)
+iptables -A INPUT -m mac –mac-source MAC -j DROP (Bloquea una mac concreta)
+
+Una forma más sencilla de hacer esto en Linux, es utilizando el firewall ufw. Para habilitar el firewall bastan con ejecutar sudo ufw enable.
+Utilizando la opción allow (sudo ufw allow PUERTO) estableceremos una regla que permitirá el tráfico en el puerto que deseemos. La opción deny nos permite lo contrario.
+Como herramienta gráfica podemos utilizar gufw, parecido a ufw pero con interfaz gráfica.
+
+Para filtrar paquetes en Windows Server, deberemos irnos al apartado de Enrutamiento y acceso remoto. Una vez ahí seleccionamos el servidor al que vamos a realizar
+el filtrado de paquetes. Desplegamos la pestaña de IPv6 o IPv4, hacemos click derecho en el apartado General y seleccionamos Propiedades.
+Una vez ahí, seleccionamos Filtros entrantes o salientes, seleccionamos Nuevo y agregamos los filtros que necesitemos.
