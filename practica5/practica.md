@@ -43,10 +43,7 @@ mysql> select * from datos;
 
 mysql> describe datos;
 
-y nos saldrá lo que aparece en la siguiente captura:
-
-img
-Replicar una BD MySQL con mysqldump
+## Replicar una BD MySQL con mysqldump
 
 MySQL ofrece la una herramienta para clonar las BD que tenemos en nuestra maquina. Esta herramienta es mysqldump. Lo primero que tenemos que hacer es entrar en mysql y ejecutar lo siguiente : mysql> FLUSH TABLES WITH READ LOCK; para evitar que se acceda a la base de datos. Ahora ya sí podemos hacer el mysqldump para guardar los datos. En el servidor principal (maquina1) hacemos: mysqldump ejemplodb -u root -p > /tmp/ejemplodb.sql Como habíamos bloqueado las tablas, debemos desbloquearlas (quitar el “LOCK”): mysql> UNLOCK TABLES; Ya podemos ir a la máquina esclavo (maquina2, secundaria) para copiar el archivo .SQL con todos los datos salvados desde la máquina principal (maquina1): scp maquina1:/tmp/ejemplodb.sql /tmp/. Ahora nos vamos a la máquina 2 y ejecutamos lo siguiente: mysql> CREATE DATABASE ‘ejemplodb’; y mysql -u root -p ejemplodb < /tmp/ejemplodb.sql
 Replicación de BD mediante una configuración maestro-esclavo
@@ -75,4 +72,4 @@ mysql> CHANGE MASTER TO MASTER_HOST='192.168.31.200', MASTER_USER='esclavo', MAS
 
 Ahora arrancamos al esclavo en mysql con : mysql> START SLAVE; Por último, volvemos al maestro y volvemos a activar las tablas para que puedan meterse nuevos datos en el maestro: mysql> UNLOCK TABLES; Ahora, si queremos asegurarnos de que todo funciona perfectamente y que el esclavo no tiene ningún problema para replicar la información, nos vamos al esclavo y con la siguiente orden: mysql> SHOW SLAVE STATUS\G revisamos si el valor de la variable “Seconds_Behind_Master” es distinto de “null” como en la siguiente captura: img
 
-Para comprobar que todo funciona, debemos ir al maestro e introducir nuevos datos a la base de datos. A continuación vamos al esclavo para revisar si la modificación se ha reflejado en la tabla modificada en el maestro como podemos ver en las siguientes capturas. Introduciendo datos en maestro: img Viendo resultados en esclavo: img
+Para comprobar que todo funciona, debemos ir al maestro e introducir nuevos datos a la base de datos. A continuación vamos al esclavo para revisar si la modificación se ha reflejado en la tabla modificada en el maestro como podemos ver en las siguientes capturas. 
