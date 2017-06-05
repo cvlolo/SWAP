@@ -58,18 +58,20 @@ mysql> FLUSH TABLES WITH READ LOCK;
 
 Para finalizar con la configuración en el maestro, obtenemos los datos de la base de datos que vamos a replicar para posteriormente usarlos en la configuración del esclavo: mysql> SHOW MASTER STATUS;
 
-nos saldrá algo como la siguiente captura:
+![img](https://github.com/cvlolo/SWAP/blob/master/practica5/master.png)
 
-img
-
-Una vez realizado el script lo ejecutamos y con el comando sudo iptables -L -n -v comprobamos el estado de cortafuegos como vemos en la siguiente captura:
-
-img
 
 volvemos a la máquina esclavo a mysql y ejecutamos lo siguiente:
 
-mysql> CHANGE MASTER TO MASTER_HOST='192.168.31.200', MASTER_USER='esclavo', MASTER_PASSWORD='esclavo', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=501, MASTER_PORT=3306; donde MASTER_LOG_FILE colocamos lo que viene en FILE MASTER_LOG_POS lo que viene en position y la ip la del maestro.
+mysql> CHANGE MASTER TO MASTER_HOST='192.168.31.100', MASTER_USER='esclavo', MASTER_PASSWORD='esclavo', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=501, MASTER_PORT=3306; donde MASTER_LOG_FILE colocamos lo que viene en FILE MASTER_LOG_POS lo que viene en position y la ip la del maestro.
 
-Ahora arrancamos al esclavo en mysql con : mysql> START SLAVE; Por último, volvemos al maestro y volvemos a activar las tablas para que puedan meterse nuevos datos en el maestro: mysql> UNLOCK TABLES; Ahora, si queremos asegurarnos de que todo funciona perfectamente y que el esclavo no tiene ningún problema para replicar la información, nos vamos al esclavo y con la siguiente orden: mysql> SHOW SLAVE STATUS\G revisamos si el valor de la variable “Seconds_Behind_Master” es distinto de “null” como en la siguiente captura: img
+Ahora arrancamos al esclavo en mysql con : mysql> START SLAVE; Por último, volvemos al maestro y volvemos a activar las tablas para que puedan meterse nuevos datos en el maestro: mysql> UNLOCK TABLES; Ahora, si queremos asegurarnos de que todo funciona perfectamente y que el esclavo no tiene ningún problema para replicar la información, nos vamos al esclavo y con la siguiente orden: mysql> SHOW SLAVE STATUS\G revisamos si el valor de la variable “Seconds_Behind_Master” es diferente a null como en la siguiente captura(en nuestro caso es 0): 
 
-Para comprobar que todo funciona, debemos ir al maestro e introducir nuevos datos a la base de datos. A continuación vamos al esclavo para revisar si la modificación se ha reflejado en la tabla modificada en el maestro como podemos ver en las siguientes capturas. 
+![img](https://github.com/cvlolo/SWAP/blob/master/practica5/master2.png)
+
+
+Para comprobar que todo funciona, debemos ir al maestro e introducir nuevos datos a la base de datos. A continuación vamos al esclavo para comprobar que los cambios se han realizado:
+
+![img](https://github.com/cvlolo/SWAP/blob/master/practica5/master3.png)
+
+
